@@ -1,5 +1,5 @@
 # sqlite-nfs-chemotherapy
-An answer to a problem that probably should exist but I'm lazy so here ya go.
+An answer to a problem that probably *should* exist but I'm lazy and I know you are too, so here ya go.
 
 # Disclaimer
 
