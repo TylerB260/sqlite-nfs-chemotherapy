@@ -52,7 +52,8 @@ Boy, I am glad you asked! Environment variables! Are you surprised?
    - Make sure to review the other environment variables as well!
 3. If you're using LinuxServer.io containers, or other containers with s6-overlay utilies, add mounts for the `startup.sh`, `tumor.sh`, and `shutdown.sh` scripts as shown below.
    - `/mnt/wherever_you_keep_your_stuff/start.sh` -> `/etc/cont-init.d/startup.sh`
-   - `/mnt/wherever_you_keep_your_stuff/tumor.sh` -> `/custom-services.d/tumor.sh` (yes, I should switch this to the s6 `/etc/services.d/` folder, but I am lazy, as mentioned before. Sue me.
+   - `/mnt/wherever_you_keep_your_stuff/tumor.sh` -> `/custom-services.d/tumor.sh`
+     - Yes, I should switch this to the s6 `/etc/services.d/` folder, but I am lazy, as mentioned before. Sue me.
    - `/mnt/wherever_you_keep_your_stuff/shutdown.sh` -> `/etc/cont-finish.d/shutdown.sh`
    - I was originally using the LinuxServer.io documentation, but the s6-overlay utility suite they use has some more functionality listed here: [just-containers/s6-overlay](https://github.com/just-containers/s6-overlay)
    - Additionally, feel free to read their documentation too because I am not to be trusted: [Customizing our Containers - Custom Scripts](https://www.linuxserver.io/blog/2019-09-14-customizing-our-containers#custom-scripts)
