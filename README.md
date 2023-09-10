@@ -5,6 +5,29 @@ An answer to a problem that probably *should* exist but I'm lazy and I know you 
 
 This is horrible and if you decide to use it you are horrible, like me. Probably worse, honestly. It'll take a literal shit on your databases and tell your children that they were adopted. May God have mercy on your soul if you decide to use this in your "production" environment. Back your stuff up. Repeatedly. Every nanosecond. You have been warned.
 
+## Supported Containers 
+
+This is from my own personal testing, no officialy endorsement, yadda yadda yadda. Renaming the database
+- linuxserver/radarr: `/config/radarr.db` and `/config/logs.db`
+  - Tested, working wonderfully, no issues.
+- linuxserver/sonarr: `/config/sonarr.db` and `/config/logs.db`
+  - Tested, working wonderfully, no issues.
+- linuxserver/prowlarr: `/config/prowlarr.db` and `/config/logs.db`
+  - Tested, working wonderfully, no issues.
+- linuxserver/heimdall: `/config/www/app.sqlite`
+  - Tested, working wonderfully, no issues.
+- linuxserver/overseerr: `/config/db/db.sqlite3`
+  - Tested, working wonderfully, no issues.
+- linuxserver/sabnzbd: `/config/admin/history1.db`
+  - Pretty much pointless, not enough I/O to warrant this and SABnzbd waits until it can write before screaming like the *arrs do.
+- jc21/nginx-proxy-manager: `/data/nginx/data/database.sqlite`
+  - Untested, likely not necessary due to low I/O, not seeing any I/O errors like the *arrs.
+- vaultwarden/server: `/config/dq.sqlite3`
+  - Need to place the scripts in `/etc/vaultwarden.d/` instead.
+  - Likely not necessary due to low I/O, not seeing any I/O errors like the *arrs.
+  - Startup script has substitution error, crashes, needs work.
+  - Shutdown script still WIP, beware.
+
 ## Why are you here?
 
 Your shit is *fucked.* You were dockerizing all of the things in your shiny new swarm running in your homelab. Everything was going great... until it wasn't. Suddenly, your Servarr containers are screaming about database errors. You try and restore a backup (you configured automatic backups, right? right?!) and it might fix it for a while, but the corruption returns. You realize that the Servarr suite uses SQLite, a flatfile database engine that relies on locking a database file. NFS (v3 anyway) is horrible for SQLite and if people find out you attempted to use it they'll say you are human garbage. We are... but that's besides the point.
