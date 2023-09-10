@@ -50,20 +50,16 @@ Boy, I am glad you asked! Environment variables! Are you surprised?
    - These are simply paths to the database file(s) you renamed, but without the _remote.
    - If you've got more than 5 in one container then you're doing something wrong. Seek help.
    - Make sure to review the other environment variables as well!
-3. Add a mount for the `tumor.sh` script so that it can be called when the container is up and running.
-   - If you've got some other method of including the script, great. I just work here, dude.
-   - Something like `/mnt/awesome_nfs_share/tumor.sh` -> `/tmp/tumor.sh`
-4. If you're using the LinuxServer.io containers, refer to their documentation on adding custom init scripts.
-   - Add a mount in the `/custom-cont-init.d/` directory, pick a name that makes you feel special.
-   - Read their documentation because I am not to be trusted: [Customizing our Containers - Custom Scripts](https://www.linuxserver.io/blog/2019-09-14-customizing-our-containers#custom-scripts)
-   - Something like `/mnt/w2k3_secure_smb/startup.sh` -> `/custom-cont-init.d/startup.sh`
-5. If you're **NOT** using a LinuxServer.io container, check the publisher for something similar or just hijack their entrypoint like we're doing in the next script and cross your fingers.
-   - This may or may not work, your mileage may vary.
-7. Next, set the commandline arguments for the container or service to be the following: `/bin/bash /tmp/tumor.sh`
-   - If your container doesn't have `bash`, then you're probably way too damn smart to need this joke of a script. And if you're that smart, why are you here?
-8. Back your stuff up for the umpteenth time before relying on some random script you found on GitHub.
+3. If you're using LinuxServer.io containers, or other containers with s6-overlay utilies, add mounts for the `startup.sh`, `tumor.sh`, and `shutdown.sh` scripts as shown below.
+   - `/mnt/wherever_you_keep_your_stuff/start.sh` -> `/etc/cont-init.d/startup.sh`
+   - `/mnt/wherever_you_keep_your_stuff/tumor.sh` -> `/etc/cont-init.d/tumor.sh`
+   - `/mnt/wherever_you_keep_your_stuff/shutdown.sh` -> `/etc/cont-init.d/shutdown.sh`
+   - I was originally using the LinuxServer.io documentation, but the s6-overlay utility suite they use has some more functionality listed here: [just-containers/s6-overlay](https://github.com/just-containers/s6-overlay)
+   - Additionally, feel free to read their documentation too because I am not to be trusted: [Customizing our Containers - Custom Scripts](https://www.linuxserver.io/blog/2019-09-14-customizing-our-containers#custom-scripts)
+   - If you've got some other method of including the scripts, great. I just work here, dude.
+4. Back your stuff up for the umpteenth time before relying on some random script you found on GitHub.
    - I am not responsible for your wife divorcing you or your mother giving you up for adoption. Seriously.
-   - This script has the potential to go horrifically wrong, so you're on your own.
+   - These scripts have the potential to go horrifically wrong, so you're on your own.
 
 ## What now?
 
