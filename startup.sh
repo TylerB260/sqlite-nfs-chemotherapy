@@ -18,7 +18,8 @@ for I in 1 2 3 4 5; do
     dbext="${dbfile##*.}"
 
     if [ ! -f "$dbpath/$dbname.${dbext}_remote" ]; then
-      echo Chemotherapy: STOP!!! You need to rename this file to $dbname\_remote otherwise your database will actually get cancer!
+      echo Chemotherapy: Checking for $dbpath/$dbname.${dbext}_remote: DOES NOT EXIST! 
+      echo STOP!!! You need to rename the database file to $dbname\_remote otherwise your database will actually get cancer!
       echo A symlink will be created with the original filename - the symlink is ephemeral and WILL be removed when this script runs.
       echo Let this be a lesson - back up your shit!
       sleep infinity
