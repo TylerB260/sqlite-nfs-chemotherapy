@@ -1,7 +1,8 @@
 #!/bin/bash
-CHEMO_CADENCE=900 # how often are the databases written?
-
 echo Chemotherapy: The synchronization tumor is lurking...
+
+$CHEMO_ENTRYPOINT
+CHEMO_CADENCE="${CHEMO_CADENCE:-900}"
 
 write_database() {
   echo Chemotherapy: Time for your appointment! Writing databases to NFS share...
