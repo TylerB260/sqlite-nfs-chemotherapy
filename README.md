@@ -11,11 +11,11 @@ Death is bad. Why not suffer from metaphorical cancer instead? Introducing... **
 
 ## What is this?
 
-It's my hastily written hunk of shit that essentially copies the database files to `/tmp`, symlinks them to the their original path, and copies the local database file (yes, with the `sqlite` command and not just `rsync` or `cp`, even if I wanted too...) back to the NFS mount periodically. The result is *less* corruption and less slowness! Notice I said less and not zero.
+It's my hastily written hunk of shit that essentially copies the database file to `/tmp`, symlinks it back to their original path, and copies the local database file (yes, with the `sqlite` command and not just `rsync` or `cp`, even if I really wanted to...) back to the NFS mount periodically. The result is *less* corruption and less slowness! Notice I said less and not zero.
 
 ## What isn't this?
 
-This doesn't allow you to have multiple replicas of the servarr suite, or any other SQLite based application running in a container. Why would you ever want to do that? Why would you ever **want** to do that? Stop it. Get some help. 
+This doesn't allow you to have multiple replicas of the servarr suite, or any other SQLite based application running in a container. Why would you ever want to do that? **Why would you ever *want* to do that?** Stop it. Get some help. 
 
 # Disclaimer
 
