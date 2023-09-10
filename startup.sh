@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/with-contenv /bin/bash
 echo Chemotherapy: Installing SQLite3...
 apk add -U --no-cache sqlite
 
