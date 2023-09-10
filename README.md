@@ -7,7 +7,8 @@ This is horrible and if you decide to use it you are horrible, like me. Probably
 
 ## Supported Containers 
 
-This is from my own personal testing, no officialy endorsement, yadda yadda yadda. Renaming the database
+This is from my own personal testing, no officialy endorsement, yadda yadda yadda. Renaming the database is pretty much all you need to do for the linuxservers.io containers. 
+
 - linuxserver/radarr: `/config/radarr.db` and `/config/logs.db`
   - Tested, working wonderfully, no issues.
 - linuxserver/sonarr: `/config/sonarr.db` and `/config/logs.db`
@@ -20,6 +21,9 @@ This is from my own personal testing, no officialy endorsement, yadda yadda yadd
   - Tested, working wonderfully, no issues.
 - linuxserver/sabnzbd: `/config/admin/history1.db`
   - Pretty much pointless, not enough I/O to warrant this and SABnzbd waits until it can write before screaming like the *arrs do.
+ 
+For others, depending on the base image, your mileage may vary.
+
 - jc21/nginx-proxy-manager: `/data/nginx/data/database.sqlite`
   - Untested, likely not necessary due to low I/O, not seeing any I/O errors like the *arrs.
 - vaultwarden/server: `/config/dq.sqlite3`
