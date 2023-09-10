@@ -52,9 +52,11 @@ Boy, I am glad you asked! Environment variables! Are you surprised?
    - Make sure to review the other environment variables as well!
 3. Add a mount for the `tumor.sh` script so that it can be called when the container is up and running.
    - If you've got some other method of including the script, great. I just work here, dude.
+   - Something like `/mnt/awesome_nfs_share/tumor.sh` -> `/tmp/tumor.sh`
 4. If you're using the LinuxServer.io containers, refer to their documentation on adding custom init scripts.
    - Add a mount in the `/custom-cont-init.d/` directory, pick a name that makes you feel special.
    - Read their documentation because I am not to be trusted: [Customizing our Containers - Custom Scripts](https://www.linuxserver.io/blog/2019-09-14-customizing-our-containers#custom-scripts)
+   - Something like `/mnt/w2k3_secure_smb/startup.sh` -> `/custom-cont-init.d/startup.sh`
 5. If you're **NOT** using a LinuxServer.io container, check the publisher for something similar or just hijack their entrypoint like we're doing in the next script and cross your fingers.
    - This may or may not work, your mileage may vary.
 7. Next, set the commandline arguments for the container or service to be the following: `/bin/bash /tmp/tumor.sh`
