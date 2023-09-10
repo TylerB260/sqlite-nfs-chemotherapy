@@ -39,7 +39,9 @@ Boy, I am glad you asked! Environment variables! Are you surprised?
 - `CHEMO_CADENCE` = `900` - How often are your databases written back to the NFS share? **This is an integer in seconds.**
 - `CHEMO_ENTRYPOINT` = `` - Overwriting the container's entrypoint? be a good person and call it from here so your stuff works.
 - `PUID` = `(container's user)` - What user (id) should own the symlink? If you're using LinuxServer.io containers you've seen this before. If you don't specify anything its smart enough to figure it out.
+   - If you get read only database errors, this is likely why. Especially likely if you're using NFS since permissions are probably trash.
 - `PGID` = `(container's group)` - What group (id) should own the symlink? Again, the script is somehow smart enough to figure it out on its own if you don't speciy anything.
+   - Same disclaimer as above - if you get readonly issues, this may be related. 
 - `POSIX` = `644` - What permissions should be assigned to the symlink?
 
 ## How do I use this?
