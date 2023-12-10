@@ -3,7 +3,7 @@ An answer to a problem that probably *should* exist but I'm lazy and I know you 
 
 # Disclaimer
 
-This is horrible and if you decide to use it you are horrible, like me. Probably worse, honestly. It'll take a literal shit on your databases and tell your children that they were adopted. May God have mercy on your soul if you decide to use this in your "production" environment. Back your stuff up. Repeatedly. Every nanosecond. You have been warned.
+This is horrible and if you decide to use it you are horrible, like me. Probably worse, honestly. It'll take a literal poopoo on your databases and tell your children that they were adopted. May God have mercy on your soul if you decide to use this in your "production" environment. Back your stuff up. Repeatedly. Every nanosecond. You have been warned.
 
 ## Supported Containers 
 
