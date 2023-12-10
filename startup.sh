@@ -5,7 +5,7 @@ echo Chemotherapy: Installing SQLite3...
 if (type -p apk > /dev/null); then apk add -U --no-cache sqlite; fi
 if (type -p apt > /dev/null); then apt install sqlite -y; fi
 
-# eeeeeeeeels. well shit.
+# eeeeeeeeels. well shit. todo: add yum/dnf support for rhel flavors.
 if (type -p sqlite3 > /dev/null); then echo Chemotherapy: Not sure what distro we are on... help!; fi
 
 PUID="${PUID:-$(id -u)}"
