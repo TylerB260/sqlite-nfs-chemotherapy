@@ -34,21 +34,21 @@ For others, depending on the base image, your mileage may vary.
 
 ## Why are you here?
 
-Your shit is *fucked.* You were dockerizing all of the things in your shiny new swarm running in your homelab. Everything was going great... until it wasn't. Suddenly, your Servarr containers are screaming about database errors. You try and restore a backup (you configured automatic backups, right? right?!) and it might fix it for a while, but the corruption returns. You realize that the Servarr suite uses SQLite, a flatfile database engine that relies on locking a database file. NFS (v3 anyway) is horrible for SQLite and if people find out you attempted to use it they'll say you are human garbage. We are... but that's besides the point.
+Your databases are *on fire.* You were dockerizing all of the things in your shiny new swarm running in your homelab. Everything was going great... until it wasn't. Suddenly, your Servarr containers are screaming about database errors. You try and restore a backup (you configured automatic backups, right? right?!) and it might fix it for a while, but the corruption returns. You realize that the Servarr suite uses SQLite, a flatfile database engine that relies on locking a database file. NFS (v3 anyway) is horrible for SQLite and if people find out you attempted to use it they'll say you are a terrible excuse of a human. We are... but that's besides the point.
 
-The Servarr suite, Plex, Vaultwarden, and maaaaany other applications use SQLite as their database engine because it's simple - and stupid. But that's a good thing! Unless you're using NFS or SMB and there's literally anything else going on on the destination filesystem. Then it's not so simple. Then it dies, taking your data down with it. This may result in a horrifically slow application (looking at you, Sonarr...) or a completely destroyed database that causes the application to die pre-emptively as soon as it gets a look at it.
+The Servarr suite, Plex, Vaultwarden, and maaaaany other applications use SQLite as their database engine because it's simple. But that's a good thing! Unless you're using NFS or SMB and there's literally anything else going on on the destination filesystem. Then it's not so simple. Then it dies, taking your data down with it. This may result in a horrifically slow application (looking at you, Sonarr...) or a completely destroyed database that causes the application to die pre-emptively as soon as it gets a look at it.
 
-Death is bad. Why not suffer from metaphorical cancer instead? Introducing... **sqlite-nfs-chemotherapy**!
+Death is bad. Why not suffer instead? Introducing... **sqlite-nfs-chemotherapy**!
 
 ## What is this?
 
-It's my hastily written hunk of shit that essentially copies the database file to `/tmp`, symlinks it back to their original path, and copies the local database file (yes, with the `sqlite` command and not just `rsync` or `cp`, even though I really wanted to...) back to the original NFS / SMB mount periodically. The result is *less* corruption and less slowness! 
+It's my hastily written chunk of garbagio that essentially copies the database file to `/tmp`, symlinks it back to their original path, and copies the local database file (yes, with the `sqlite` command and not just `rsync` or `cp`, even though I really wanted to...) back to the original NFS / SMB mount periodically. The result is *less* corruption and less slowness! 
 
 Notice I said less - not zero. 
 
 ## What *isn't* this?
 
-This doesn't allow you to have multiple replicas of the Servarr suite, or any other SQLite based application running in a container. Why would you ever want to do that? **Why would you ever *want* to do that?** Stop it. Get some help. 
+This doesn't allow you to have multiple replicas of the Servarr suite, or any other SQLite based application running in a container. Why would you ever want to do that? **Why would you ever *need* to do that?** Stop it. Get some help. 
 
 ---
 
@@ -93,3 +93,5 @@ Boy, I am glad you asked! Environment variables! Are you surprised?
 ## What now?
 
 Hopefully your SQLite containers are now attending their regularly scheduled chemotherapy appointments and are running smoothly. I hope for your sake that everything goes well and that there isn't a freak occurence of quadruple the dosage being given or something equally bad.
+
+Oh, I almost forgot - migrate to something like Longhorn if you're using a Kubernetes cluster. That solution actually makes sense instead of using this abomination.
